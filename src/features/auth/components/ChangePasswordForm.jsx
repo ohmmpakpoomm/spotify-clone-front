@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import Input from "../../../components/Input";
 import Label from "../../../components/Label";
 import validateChangePassword from "../validations/validate-changePassword";
+import useAuth from "../../../hooks/use-auth";
 
 const initial = {
   emailOrMobile: "",
@@ -14,6 +14,8 @@ export default function ChangePasswordForm() {
   const [input, setInput] = useState(initial);
   const [isErr, setIsErr] = useState(null);
 
+  const { changePassword } = useAuth();
+
   const hdlChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
@@ -22,9 +24,13 @@ export default function ChangePasswordForm() {
     try {
       e.preventDefault();
       const validateErr = validateChangePassword(input);
-      console.log(validateErr);
       if (validateErr) {
         return setIsErr(validateErr);
+      }
+      const res = await changePassword(input);
+      console.log(res);
+      if (res?.response.status === 400) {
+        setIsErr(res?.response.data);
       }
     } catch (err) {
       console.log(err);
@@ -34,6 +40,11 @@ export default function ChangePasswordForm() {
     <>
       {isErr && (
         <div className=" px-4 py-3 bg-red w-full">
+          {isErr.message ? (
+            <span className=" text-white text-sm font-medium">
+              {isErr?.message},
+            </span>
+          ) : null}
           {isErr.emailOrMobile ? (
             <span className=" text-white text-sm font-medium">
               {isErr?.emailOrMobile},

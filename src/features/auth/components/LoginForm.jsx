@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Input from "../../../components/Input";
 import Label from "../../../components/Label";
 import validateLogin from "../validations/validate-login";
+import useAuth from "../../../hooks/use-auth";
 
 const initial = {
   emailOrMobile: "",
@@ -13,6 +14,8 @@ export default function LoginForm() {
   const [input, setInput] = useState(initial);
   const [isErr, setIsErr] = useState(null);
 
+  const { login } = useAuth();
+
   const hdlChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
@@ -21,10 +24,10 @@ export default function LoginForm() {
     try {
       e.preventDefault();
       const validateErr = validateLogin(input);
-      console.log(validateErr);
       if (validateErr) {
         return setIsErr(validateErr);
       }
+      await login(input);
     } catch (err) {
       console.log(err);
     }
@@ -66,7 +69,7 @@ export default function LoginForm() {
         >
           Log in
         </button>
-        <Link to="/forgot-password" className="text-white underline">
+        <Link to="/auth/forgot-password" className="text-white underline">
           Forgot your password?
         </Link>
       </form>

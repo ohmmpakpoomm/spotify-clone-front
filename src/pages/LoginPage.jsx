@@ -15,7 +15,7 @@ export default function LoginPage() {
         <hr className="w-[70%] border border-gray012 m-8" />
         <div className="flex gap-2">
           <span className="text-gray05">Don&apos;t have an account?</span>
-          <Link to="/register" className="text-white underline">
+          <Link to="/auth/register" className="text-white underline">
             Sign up for Spotify
           </Link>
         </div>

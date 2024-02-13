@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import Input from "../../../components/Input";
 import Label from "../../../components/Label";
 import validateRegister from "../validations/validate-register";
+import useAuth from "../../../hooks/use-auth";
 
 const initial = {
   firstName: "",
@@ -16,6 +16,8 @@ export default function RegisterForm() {
   const [input, setInput] = useState(initial);
   const [isErr, setIsErr] = useState(null);
 
+  const { register } = useAuth();
+
   const hdlChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
@@ -24,10 +26,10 @@ export default function RegisterForm() {
     try {
       e.preventDefault();
       const validateErr = validateRegister(input);
-      console.log(validateErr);
       if (validateErr) {
         return setIsErr(validateErr);
       }
+      await register(input);
     } catch (err) {
       console.log(err);
     }

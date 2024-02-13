@@ -6,7 +6,7 @@ export default function OuterHeader() {
   return (
     <div className=" sticky min-h-[100px] w-full bg-black18 top-0 left-0 px-12 flex items-center">
       <div>
-        <Link to="/">
+        <Link to="/auth/login">
           <img src={SpotifyWhiteLogo} className=" w-32" />
         </Link>
       </div>
