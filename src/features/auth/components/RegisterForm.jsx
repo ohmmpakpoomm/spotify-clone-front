@@ -14,7 +14,7 @@ const initial = {
 };
 export default function RegisterForm() {
   const [input, setInput] = useState(initial);
-  const [isErr, setIsErr] = useState({});
+  const [isErr, setIsErr] = useState(null);
 
   const hdlChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -34,7 +34,35 @@ export default function RegisterForm() {
   };
   return (
     <>
-      {isErr && <div>[isErr?.firstName,isErr?.lastName]</div>}
+      {isErr && (
+        <div className=" px-4 py-3 bg-red w-full">
+          {isErr.firstName ? (
+            <span className=" text-white text-sm font-medium">
+              {isErr?.firstName},
+            </span>
+          ) : null}
+          {isErr.lastName ? (
+            <span className=" text-white text-sm font-medium">
+              {isErr?.lastName},
+            </span>
+          ) : null}
+          {isErr.emailOrMobile ? (
+            <span className=" text-white text-sm font-medium">
+              {isErr?.emailOrMobile},
+            </span>
+          ) : null}
+          {isErr.password ? (
+            <span className=" text-white text-sm font-medium">
+              {isErr?.password},
+            </span>
+          ) : null}
+          {isErr.confirmPassword ? (
+            <span className=" text-white text-sm font-medium">
+              {isErr?.confirmPassword},
+            </span>
+          ) : null}
+        </div>
+      )}
       <form
         onSubmit={hdlSubmit}
         className="flex flex-col w-full items-center justify-center"
