@@ -6,7 +6,8 @@ import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import RedirectRoute from "../features/auth/components/RedirectRoute";
 import ProtectRoute from "../features/auth/components/ProtectRoute";
 import HomePage from "../pages/HomePage";
-import { Outlet } from "react-router-dom";
+import PlaylistCard from "../features/playlist/components/PlaylistCard";
+import Search from "../features/playlist/components/Search";
 
 const router = createBrowserRouter([
   {
@@ -35,10 +36,13 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <ProtectRoute>
-        <Outlet />
+        <HomePage />
       </ProtectRoute>
     ),
-    children: [{ path: "", element: <HomePage /> }],
+    children: [
+      { path: "", element: <PlaylistCard /> },
+      { path: "search", element: <Search /> },
+    ],
   },
 ]);
 

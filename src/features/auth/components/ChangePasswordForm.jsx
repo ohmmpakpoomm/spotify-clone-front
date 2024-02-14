@@ -28,7 +28,6 @@ export default function ChangePasswordForm() {
         return setIsErr(validateErr);
       }
       const res = await changePassword(input);
-      console.log(res);
       if (res?.response.status === 400) {
         setIsErr(res?.response.data);
       }
