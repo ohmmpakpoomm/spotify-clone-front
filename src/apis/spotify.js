@@ -1,5 +1,5 @@
-import axios from "axios";
-import { setLocalSpotifyToken } from "../utils/local-storage";
+import spotifyAPI from "../config/spotifyAPI";
+import { getLocalSpotifyToken } from "../utils/local-storage";
 
 export const getSpotifyToken = () => {
   const client_id = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
@@ -19,21 +19,18 @@ export const getSpotifyToken = () => {
     .then((data) => data);
 };
 
-const url = import.meta.env.VITE_SPOTIFY_API_URL;
-const spotifyToken =
-  "BQBof-OavNxlrgxvujVF4M-WdXSY0SYGYJS1XuDxFWctVGNhHxFsLHFM6xxVH2qXUY7SbJeANChRLWyKyrG66qJ0BT9r52Y2BK_H_sw8ognymiAK_Bg";
-setLocalSpotifyToken(spotifyToken);
+const spotifyToken = getLocalSpotifyToken();
 
 export const searchTrack = (input) => {
   const query = {
     q: input,
     type: "track",
     market: "TH",
-    limit: "12",
+    limit: "50",
     offset: "0",
   };
 
-  return axios.get(`${url}/search`, {
+  return spotifyAPI.get(`/search`, {
     headers: { Authorization: `Bearer ${spotifyToken}` },
     params: query,
   });

@@ -17,7 +17,7 @@ export default function HomePage() {
             <Outlet />
           </ContentContainer>
         </HomePageLayout>
-        <div className="text-white h-[10vh]">player</div>
+        <div className="h-[10vh] text-white">Player</div>
       </PlaylistContextProvider>
     </>
   );

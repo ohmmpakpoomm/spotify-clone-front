@@ -8,3 +8,4 @@ export const removeToken = () => localStorage.removeItem(ACCESS_TOKEN);
 export const setLocalSpotifyToken = (token) =>
   localStorage.setItem(SPOTIFY_TOKEN, token);
 export const getLocalSpotifyToken = () => localStorage.getItem(SPOTIFY_TOKEN);
+export const removeSpotifyToken = () => localStorage.removeItem(SPOTIFY_TOKEN);

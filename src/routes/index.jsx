@@ -7,7 +7,7 @@ import RedirectRoute from "../features/auth/components/RedirectRoute";
 import ProtectRoute from "../features/auth/components/ProtectRoute";
 import HomePage from "../pages/HomePage";
 import PlaylistCard from "../features/playlist/components/PlaylistCard";
-import Search from "../features/playlist/components/Search";
+import TrackList from "../features/playlist/components/TrackList";
 
 const router = createBrowserRouter([
   {
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
     ),
     children: [
       { path: "", element: <PlaylistCard /> },
-      { path: "search", element: <Search /> },
+      { path: "search", element: <TrackList /> },
     ],
   },
 ]);

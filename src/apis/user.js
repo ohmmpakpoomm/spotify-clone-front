@@ -1,4 +1,4 @@
-import axios from "../config/axios";
+import myAPI from "../config/myAPI";
 
 export const changePassword = (body) =>
-  axios.patch("/auth/change-password", body);
+  myAPI.patch("/auth/change-password", body);

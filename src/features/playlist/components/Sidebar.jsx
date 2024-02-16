@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Sidebar() {
   return (
     <>
-      <div className=" text-gray05 bg-gray008 rounded-lg col-span-2 row-span-1 px-3 py-2 flex flex-col">
+      <div className=" text-gray05 bg-gray008 rounded-lg col-span-1 row-span-1 px-3 py-2 flex flex-col">
         <div className="flex items-center gap-4 px-3 py-1 h-1/2 hover:text-white transition duration-300">
           <Home size={24} />
           <Link to="/">
@@ -19,7 +19,7 @@ export default function Sidebar() {
           </Link>
         </div>
       </div>
-      <div className="text-gray05 bg-gray008 rounded-lg col-span-2 row-start-2 row-end-9 px-2 pb-2">
+      <div className="text-gray05 bg-gray008 rounded-lg col-span-1 row-start-2 row-end-7 px-2 pb-2">
         <div className="h-[8%] flex items-center justify-between px-2 py-2 hover:text-white transition duration-300">
           <div className="flex items-center gap-4 px-2 py-1 h-1/2">
             <Library size={24} />
