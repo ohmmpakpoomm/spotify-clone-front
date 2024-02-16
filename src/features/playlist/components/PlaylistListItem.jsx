@@ -11,7 +11,7 @@ export default function PlaylistListItem({ item, number }) {
     <li>
       <div
         role="button"
-        className="h-16 p-2 gap-4 rounded-md bg-gray012 flex items-center hover:bg-gray03"
+        className="group h-16 p-2 gap-4 rounded-md bg-gray012 flex items-center hover:bg-gray03"
       >
         {playlistImage ? (
           <img src={playlistImage} className="rounded-sm w-11 h-11" />
@@ -26,7 +26,7 @@ export default function PlaylistListItem({ item, number }) {
         </div>
         <Minus
           size={16}
-          className="hover:text-white"
+          className="hidden hover:text-white group-hover:block"
           onClick={() => deletePlaylist(id)}
         />
       </div>
