@@ -6,7 +6,7 @@ export default function PlaylistList() {
   const { playlists } = usePlaylist();
 
   return (
-    <ul className="flex flex-col gap-2">
+    <ul className="flex flex-col gap-2 overflow-scroll">
       {playlists.map((item, index) => (
         <PlaylistListItem key={index} item={item} number={index + 1} />
       ))}

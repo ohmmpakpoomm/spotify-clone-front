@@ -41,7 +41,7 @@ export default function Header() {
               type="text"
               onChange={hdlChangeInput}
               placeholder="What do you want to play?"
-              className=" h-5/6 w-1/2 text-sm bg-gray02 border border-gray02 p-4 rounded-full hover:border-gray04 focus:outline-none focus:border-2 focus:border-white"
+              className=" h-[90%] w-1/2 text-sm bg-gray02 border border-gray02 p-4 rounded-full hover:border-gray04 focus:outline-none focus:border-2 focus:border-white"
             />
           </div>
         )}

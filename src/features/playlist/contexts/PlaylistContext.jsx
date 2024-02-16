@@ -24,14 +24,6 @@ export default function PlaylistContextProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    const getPlaylists = async () => {
-      try {
-        const res = await playlistApi.getPlaylists();
-        setPlaylists(res.data.playlists);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     getPlaylists();
   }, []);
 
@@ -44,9 +36,19 @@ export default function PlaylistContextProvider({ children }) {
     }
   };
 
+  const getPlaylists = async () => {
+    try {
+      const res = await playlistApi.getPlaylists();
+      setPlaylists(res.data.playlists);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const createPlaylist = async (input) => {
     try {
       await playlistApi.createPlaylist(input);
+      await getPlaylists();
     } catch (err) {
       console.log(err);
     }
@@ -55,6 +57,7 @@ export default function PlaylistContextProvider({ children }) {
   const deletePlaylist = async (playlistId) => {
     try {
       await playlistApi.deletePlaylist(playlistId);
+      await getPlaylists();
     } catch (err) {
       console.log(err);
     }
