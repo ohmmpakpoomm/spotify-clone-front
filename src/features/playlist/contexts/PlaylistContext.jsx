@@ -1,9 +1,15 @@
 import { createContext } from "react";
 import * as spotifyApi from "../../../apis/spotify";
 import * as playlistApi from "../../../apis/playlist";
-import { useEffect } from "react";
-import { setLocalSpotifyToken } from "../../../utils/local-storage";
+import * as trackApi from "../../../apis/track";
+import {
+  getLocalSpotifyToken,
+  setLocalSpotifyToken,
+} from "../../../utils/local-storage";
 import { useState } from "react";
+import { data } from "autoprefixer";
+import { useSpotifyLoginOAuth } from "../../../hooks/use-spotify-login-oauth";
+import { useEffect } from "react";
 
 export const PlaylistContext = createContext();
 
@@ -11,20 +17,10 @@ export default function PlaylistContextProvider({ children }) {
   const [searchResult, setSearchResult] = useState([]);
   const [playlists, setPlaylists] = useState([]);
 
-  useEffect(() => {
-    const fetchSpotifyToken = async () => {
-      try {
-        const res = await spotifyApi.getSpotifyToken();
-        setLocalSpotifyToken(res.access_token);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchSpotifyToken();
-  }, []);
-
+  useSpotifyLoginOAuth();
   useEffect(() => {
     getPlaylists();
+    localStorage.removeItem("code_verifier");
   }, []);
 
   const searchTrack = async (input) => {
@@ -62,6 +58,31 @@ export default function PlaylistContextProvider({ children }) {
       console.log(err);
     }
   };
+
+  const addTrack = async (data) => {
+    try {
+      await trackApi.addTrack(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const addTrackToPlaylist = async (playlistId, trackId) => {
+    try {
+      await addTrack(data);
+      await playlistApi.addTrackToPlaylist(playlistId, trackId);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const playTrack = async (uri) => {
+    try {
+      await spotifyApi.startTrack(uri);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <PlaylistContext.Provider
       value={{
@@ -70,6 +91,8 @@ export default function PlaylistContextProvider({ children }) {
         createPlaylist,
         playlists,
         deletePlaylist,
+        addTrackToPlaylist,
+        playTrack,
       }}
     >
       {children}

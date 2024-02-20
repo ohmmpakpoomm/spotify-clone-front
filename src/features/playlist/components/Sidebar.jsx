@@ -11,26 +11,32 @@ export default function Sidebar() {
   return (
     <>
       <div className=" text-gray05 font-medium bg-gray008 rounded-lg col-span-2 row-span-1 px-3 py-2 flex flex-col">
-        <div
-          className={`${
-            location.pathname === "/" && "text-white"
-          } flex items-center gap-4 px-3 py-1 h-1/2 hover:text-white transition duration-300`}
+        <Link
+          to="/"
+          className=" px-3 py-1  h-1/2 hover:text-white transition duration-300"
         >
-          <Home size={24} />
-          <Link to="/">
+          <div
+            className={`${
+              location.pathname === "/" && "text-white"
+            } flex items-center gap-4  h-full`}
+          >
+            <Home size={24} />
             <span>Home</span>
-          </Link>
-        </div>
-        <div
-          className={`${
-            location.pathname === "/search" && "text-white"
-          } flex items-center gap-4 px-3 py-1 h-1/2 hover:text-white transition duration-300`}
+          </div>
+        </Link>
+        <Link
+          to="/search"
+          className=" px-3 py-1  h-1/2 hover:text-white transition duration-300"
         >
-          <Search size={24} />
-          <Link to="/search">
+          <div
+            className={`${
+              location.pathname === "/search" && "text-white"
+            } flex items-center gap-4  h-full`}
+          >
+            <Search size={24} />
             <span>Search</span>
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
       <div className="text-gray05 bg-gray008 rounded-lg col-span-2 row-start-2 row-end-7 px-2 pb-2 flex flex-col gap-2">
         <div className="h-[8%] flex items-center justify-between px-2 py-2 hover:text-white transition duration-300">

@@ -1,12 +1,18 @@
 import { useState, createContext, useEffect } from "react";
 import * as authApi from "../../../apis/auth";
 import * as userApi from "../../../apis/user";
-import { removeToken, setToken, getToken } from "../../../utils/local-storage";
+import {
+  removeToken,
+  setToken,
+  getToken,
+  setLocalCode,
+} from "../../../utils/local-storage";
 
 export const AuthContext = createContext();
 
 export default function AuthContextProvider({ children }) {
   const [authUser, setAuthUser] = useState(null);
+  const [codeForOAuth, setCodeForOAuth] = useState("");
 
   useEffect(() => {
     if (getToken()) {
@@ -47,9 +53,24 @@ export default function AuthContextProvider({ children }) {
       return err;
     }
   };
+
+  const getCode = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    let code = urlParams.get("code");
+    setLocalCode(code);
+    return code;
+  };
   return (
     <AuthContext.Provider
-      value={{ authUser, register, login, logout, changePassword }}
+      value={{
+        authUser,
+        register,
+        login,
+        logout,
+        changePassword,
+        codeForOAuth,
+        getCode,
+      }}
     >
       {children}
     </AuthContext.Provider>

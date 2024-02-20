@@ -6,3 +6,6 @@ export const getPlaylists = () => myAPI.get("/playlists");
 
 export const deletePlaylist = (playlistId) =>
   myAPI.delete(`/playlists/${playlistId}`);
+
+export const addTrackToPlaylist = (playlistId, trackId) =>
+  myAPI.post(`/playlists/${playlistId}`, trackId);

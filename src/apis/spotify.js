@@ -1,23 +1,9 @@
 import spotifyAPI from "../config/spotifyAPI";
-import { getLocalSpotifyToken } from "../utils/local-storage";
-
-export const getSpotifyToken = () => {
-  const client_id = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-  const client_secret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
-  const url = "https://accounts.spotify.com/api/token";
-
-  const option = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: `grant_type=client_credentials&client_id=${client_id}&client_secret=${client_secret}`,
-  };
-
-  return fetch(url, option)
-    .then((result) => result.json())
-    .then((data) => data);
-};
+import {
+  getLocalDeviceId,
+  getLocalSpotifyToken,
+  setLocalDeviceId,
+} from "../utils/local-storage";
 
 const spotifyToken = getLocalSpotifyToken();
 
@@ -33,5 +19,20 @@ export const searchTrack = (input) => {
   return spotifyAPI.get(`/search`, {
     headers: { Authorization: `Bearer ${spotifyToken}` },
     params: query,
+  });
+};
+
+export const getDeviceId = async () => {
+  const res = await spotifyAPI.get("/me/player/devices");
+  const device_id = res.data.devices[0].id;
+  setLocalDeviceId(device_id);
+  return device_id;
+};
+
+export const startTrack = async (uri) => {
+  const device_id = await getDeviceId();
+  console.log(device_id);
+  return spotifyAPI.put(`/me/player/play?device_id=${device_id}`, {
+    uris: [uri],
   });
 };
