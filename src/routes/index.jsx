@@ -8,6 +8,7 @@ import ProtectRoute from "../features/auth/components/ProtectRoute";
 import HomePage from "../pages/HomePage";
 import PlaylistCard from "../features/playlist/components/PlaylistCard";
 import TrackList from "../features/playlist/components/TrackList";
+import PlaylistContent from "../features/playlist/components/PlaylistContent";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,7 @@ const router = createBrowserRouter([
     children: [
       { path: "", element: <PlaylistCard /> },
       { path: "search", element: <TrackList /> },
+      { path: "playlist/:id", element: <PlaylistContent /> },
     ],
   },
 ]);

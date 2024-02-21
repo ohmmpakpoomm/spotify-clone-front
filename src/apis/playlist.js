@@ -9,3 +9,9 @@ export const deletePlaylist = (playlistId) =>
 
 export const addTrackToPlaylist = (playlistId, trackId) =>
   myAPI.post(`/playlists/${playlistId}`, trackId);
+
+export const deleteTrackInPlaylist = (playlistId, trackId) =>
+  myAPI.delete(`/playlists/${playlistId}/${trackId}`);
+
+export const getPlaylistList = (playlistId) =>
+  myAPI.get(`/playlists/${playlistId}`);

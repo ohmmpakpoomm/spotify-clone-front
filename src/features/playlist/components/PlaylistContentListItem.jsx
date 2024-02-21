@@ -3,18 +3,17 @@ import { Play, MoreHorizontal } from "lucide-react";
 import usePlaylist from "../../../hooks/use-playlist.js";
 import { useState } from "react";
 import AddTrackDropdown from "./AddTrackDropdown.jsx";
+import DeleteTrackDropdown from "./DeleteTrackDropdown.jsx";
 
-export default function TrackListItem({ item, number }) {
+export default function PlaylistContentListItem({ item, number }) {
   const { playTrack } = usePlaylist();
   const track = { ...item };
-  const { name, duration_ms, uri, artists, album } = track;
-  const artistName = artists[0].name;
-  const albumName = album.name;
-  const albumImageUrl = album.images[2].url;
+  const { name, durationMs, uri, artistName, albumName, albumImage, id } =
+    track;
   const [isOpen, setIsOpen] = useState(false);
 
-  const min = Math.floor(duration_ms / 1000 / 60);
-  const sec = Math.floor(duration_ms / 1000 - min * 60);
+  const min = Math.floor(durationMs / 1000 / 60);
+  const sec = Math.floor(durationMs / 1000 - min * 60);
   let formatSec = "";
   if (sec < 10) {
     formatSec += "0" + sec;
@@ -24,11 +23,11 @@ export default function TrackListItem({ item, number }) {
 
   const trackData = {
     name,
-    durationMs: duration_ms,
+    durationMs,
     uri,
     artistName,
     albumName,
-    albumImage: albumImageUrl,
+    albumImage,
   };
 
   return (
@@ -43,7 +42,7 @@ export default function TrackListItem({ item, number }) {
         />
       </div>
       <div className="flex flex-1 items-center">
-        <img src={albumImageUrl} className=" w-10 h-10 mr-3" />
+        <img src={albumImage} className=" w-10 h-10 mr-3" />
         <div className="flex flex-col">
           <span className="font-extralight text-sm">{name}</span>
           <small className=" text-gray05 group-hover:text-white">
@@ -67,7 +66,7 @@ export default function TrackListItem({ item, number }) {
           size={16}
           onClick={() => setIsOpen(!isOpen)}
         />
-        {isOpen && <AddTrackDropdown track={trackData} setIsOpen={setIsOpen} />}
+        {isOpen && <DeleteTrackDropdown trackId={id} setIsOpen={setIsOpen} />}
       </div>
     </li>
   );

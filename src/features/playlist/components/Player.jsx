@@ -26,7 +26,7 @@ export default function Player(props) {
 
   setTimeout(() => {
     token = getLocalSpotifyToken();
-  }, 1000);
+  }, 1200);
 
   useEffect(() => {
     const script = document.createElement("script");

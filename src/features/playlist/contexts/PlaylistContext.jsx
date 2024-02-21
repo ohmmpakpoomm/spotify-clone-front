@@ -16,6 +16,7 @@ export const PlaylistContext = createContext();
 export default function PlaylistContextProvider({ children }) {
   const [searchResult, setSearchResult] = useState([]);
   const [playlists, setPlaylists] = useState([]);
+  const [trackList, setTrackList] = useState([]);
 
   useSpotifyLoginOAuth();
   useEffect(() => {
@@ -41,6 +42,11 @@ export default function PlaylistContextProvider({ children }) {
     }
   };
 
+  const getTrackList = async (id) => {
+    const res = await playlistApi.getPlaylistList(id);
+    setTrackList(res.data);
+  };
+
   const createPlaylist = async (input) => {
     try {
       await playlistApi.createPlaylist(input);
@@ -61,16 +67,25 @@ export default function PlaylistContextProvider({ children }) {
 
   const addTrack = async (data) => {
     try {
-      await trackApi.addTrack(data);
+      const id = await trackApi.addTrack(data);
+      return id;
     } catch (err) {
       console.log(err);
     }
   };
 
-  const addTrackToPlaylist = async (playlistId, trackId) => {
+  const addTrackToPlaylist = async (playlistId, trackData) => {
     try {
-      await addTrack(data);
+      const trackId = await addTrack(trackData);
       await playlistApi.addTrackToPlaylist(playlistId, trackId);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const deleteTrackInPlaylist = async (playlistId, trackId) => {
+    try {
+      await playlistApi.deleteTrackInPlaylist(playlistId, trackId);
+      await getTrackList(playlistId);
     } catch (err) {
       console.log(err);
     }
@@ -92,7 +107,10 @@ export default function PlaylistContextProvider({ children }) {
         playlists,
         deletePlaylist,
         addTrackToPlaylist,
+        deleteTrackInPlaylist,
         playTrack,
+        getTrackList,
+        trackList,
       }}
     >
       {children}
