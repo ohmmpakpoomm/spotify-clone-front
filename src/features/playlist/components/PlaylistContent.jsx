@@ -5,6 +5,7 @@ import * as playlistApi from "../../../apis/playlist";
 import PlaylistContentList from "./PlaylistContentList";
 import { useLocation } from "react-router-dom";
 import usePlaylist from "../../../hooks/use-playlist";
+import PlaylistContentHeader from "./PlaylistContentHeader";
 
 export default function PlaylistContent() {
   const { trackList, getTrackList } = usePlaylist();
@@ -14,5 +15,10 @@ export default function PlaylistContent() {
     getTrackList(id);
   }, [id]);
 
-  return <PlaylistContentList trackList={trackList} />;
+  return (
+    <>
+      <PlaylistContentHeader />
+      <PlaylistContentList trackList={trackList} className="overflow-scroll" />
+    </>
+  );
 }

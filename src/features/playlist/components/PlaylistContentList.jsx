@@ -1,10 +1,22 @@
 import React from "react";
 import { Clock3 } from "lucide-react";
 import PlaylistContentListItem from "./PlaylistContentListItem";
+import usePlaylist from "../../../hooks/use-playlist";
+import { Play } from "lucide-react";
 
 export default function PlaylistContentList({ trackList }) {
+  const items = trackList.map((obj, index) => obj.uri);
+  const { playTrack } = usePlaylist();
   return (
-    <ul className="w-full h-[92%] overflow-scroll py-2">
+    <ul className="w-full h-[65%] overflow-scroll py-2">
+      <div className="w-full py-2 px-4">
+        <button
+          onClick={() => playTrack(items)}
+          className=" bg-green text-gray004 w-12 h-12 rounded-full flex justify-center items-center"
+        >
+          <Play fill="black" />
+        </button>
+      </div>
       <div className="w-full h-[36px] px-4 flex items-center gap-4 font-extralight text-sm">
         <div className="w-4 flex justify-end">
           <span className="text-gray05">#</span>

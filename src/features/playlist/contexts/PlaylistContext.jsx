@@ -42,9 +42,23 @@ export default function PlaylistContextProvider({ children }) {
     }
   };
 
+  const getPlaylistById = async (id) => {
+    try {
+      const res = await playlistApi.getPlaylistById(id);
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const getTrackList = async (id) => {
-    const res = await playlistApi.getPlaylistList(id);
-    setTrackList(res.data);
+    try {
+      const res = await playlistApi.getPlaylistList(id);
+      setTrackList(res.data);
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const createPlaylist = async (input) => {
@@ -111,6 +125,7 @@ export default function PlaylistContextProvider({ children }) {
         playTrack,
         getTrackList,
         trackList,
+        getPlaylistById,
       }}
     >
       {children}

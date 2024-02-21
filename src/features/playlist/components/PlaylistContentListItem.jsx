@@ -38,7 +38,7 @@ export default function PlaylistContentListItem({ item, number }) {
           role="button"
           className="hidden group-hover:block fill-white"
           size={16}
-          onClick={() => playTrack(uri)}
+          onClick={() => playTrack([uri])}
         />
       </div>
       <div className="flex flex-1 items-center">

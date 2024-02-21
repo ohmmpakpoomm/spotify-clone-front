@@ -32,6 +32,6 @@ export const getDeviceId = async () => {
 export const startTrack = async (uri) => {
   const device_id = await getDeviceId();
   return spotifyAPI.put(`/me/player/play?device_id=${device_id}`, {
-    uris: [uri],
+    uris: uri,
   });
 };
