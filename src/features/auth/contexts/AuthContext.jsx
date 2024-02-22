@@ -1,6 +1,5 @@
 import { useState, createContext, useEffect } from "react";
 import * as authApi from "../../../apis/auth";
-import * as userApi from "../../../apis/user";
 import {
   removeToken,
   setToken,
@@ -51,9 +50,17 @@ export default function AuthContextProvider({ children }) {
     removeLocalDeviceId();
   };
 
+  const deleteAccount = async (userId) => {
+    try {
+      await authApi.deleteUser(userId);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const changePassword = async (user) => {
     try {
-      const res = await userApi.changePassword(user);
+      const res = await authApi.changePassword(user);
       return res;
     } catch (err) {
       return err;
@@ -76,6 +83,7 @@ export default function AuthContextProvider({ children }) {
         changePassword,
         codeForOAuth,
         getCode,
+        deleteAccount,
       }}
     >
       {children}
