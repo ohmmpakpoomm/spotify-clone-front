@@ -12,7 +12,7 @@ export const searchTrack = (input) => {
     q: input,
     type: "track",
     market: "TH",
-    limit: "100",
+    limit: "50",
     offset: "0",
   };
 
