@@ -16,5 +16,8 @@ export const deleteTrackInPlaylist = (playlistId, trackId) =>
 export const getPlaylistList = (playlistId) =>
   myAPI.get(`/playlists/${playlistId}`);
 
+export const changePlaylistInfo = (playlistId, data) =>
+  myAPI.patch(`/playlists/${playlistId}`, data);
+
 export const getPlaylistById = (playlistId) =>
   myAPI.get(`/playlists/id/${playlistId}`);

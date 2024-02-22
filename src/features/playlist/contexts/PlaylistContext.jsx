@@ -105,6 +105,15 @@ export default function PlaylistContextProvider({ children }) {
     }
   };
 
+  const changePlaylistInfo = async (playlistId, data) => {
+    try {
+      await playlistApi.changePlaylistInfo(playlistId, data);
+      await getPlaylists();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const playTrack = async (uri) => {
     try {
       await spotifyApi.startTrack(uri);
@@ -126,6 +135,7 @@ export default function PlaylistContextProvider({ children }) {
         getTrackList,
         trackList,
         getPlaylistById,
+        changePlaylistInfo,
       }}
     >
       {children}

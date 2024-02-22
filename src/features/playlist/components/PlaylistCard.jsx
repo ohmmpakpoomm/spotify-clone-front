@@ -6,10 +6,12 @@ export default function PlaylistCard() {
   const { playlists } = usePlaylist();
 
   return (
-    <ul className="flex gap-8 overflow-scroll px-8">
-      {playlists.map((item, index) => (
-        <PlaylistCardItem key={index} item={item} number={index + 1} />
-      ))}
-    </ul>
+    <div className="h-[92%] w-full">
+      <ul className="flex gap-8 overflow-scroll px-8 flex-wrap">
+        {playlists.map((item, index) => (
+          <PlaylistCardItem key={index} item={item} number={index + 1} />
+        ))}
+      </ul>
+    </div>
   );
 }

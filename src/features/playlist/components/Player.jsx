@@ -2,7 +2,10 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import * as spotifyAPI from "../../../apis/spotify";
-import { getLocalSpotifyToken } from "../../../utils/local-storage";
+import {
+  getLocalSpotifyToken,
+  setLocalDeviceId,
+} from "../../../utils/local-storage";
 import { PlayCircle } from "lucide-react";
 import { PauseCircle } from "lucide-react";
 import { SkipForward } from "lucide-react";
@@ -48,6 +51,7 @@ export default function Player(props) {
 
       player.addListener("ready", ({ device_id }) => {
         console.log("Ready with Device ID", device_id);
+        setLocalDeviceId(device_id);
       });
 
       player.addListener("not_ready", ({ device_id }) => {
