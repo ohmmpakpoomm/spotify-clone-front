@@ -2,11 +2,13 @@ import React from "react";
 import usePlaylist from "../../../hooks/use-playlist.js";
 import { Minus, Music } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function PlaylistListItem({ item, number }) {
-  const { name, user, playlistImage, id } = item;
+  const { name, playlistImage, id } = item;
 
   const { deletePlaylist } = usePlaylist();
+  const navigate = useNavigate();
 
   return (
     <li>
@@ -24,12 +26,15 @@ export default function PlaylistListItem({ item, number }) {
         )}
         <div className="flex flex-col flex-1">
           <span className="text-white">{name}</span>
-          <span className="text-sm">Playlist - {user}</span>
+          <span className="text-sm">Playlist</span>
         </div>
         <Minus
           size={16}
           className="hidden hover:text-white group-hover:block"
-          onClick={() => deletePlaylist(id)}
+          onClick={() => {
+            deletePlaylist(id);
+            navigate(-1);
+          }}
         />
       </Link>
     </li>

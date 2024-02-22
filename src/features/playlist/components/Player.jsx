@@ -101,7 +101,7 @@ export default function Player(props) {
               player.previousTrack();
             }}
           >
-            <SkipBack className=" text-gray05" />
+            <SkipBack className=" text-gray05 hover:text-white" />
           </button>
           <button
             className="btn-spotify"
@@ -109,7 +109,7 @@ export default function Player(props) {
               player.togglePlay();
             }}
           >
-            {is_paused ? <PlayCircle size={32} /> : <PauseCircle size={32} />}
+            {is_paused ? <PlayCircle size={36} /> : <PauseCircle size={36} />}
           </button>
           <button
             className="btn-spotify"
@@ -117,7 +117,7 @@ export default function Player(props) {
               player.nextTrack();
             }}
           >
-            <SkipForward className=" text-gray05" />
+            <SkipForward className=" text-gray05 hover:text-white" />
           </button>
         </div>
         <div className="w-1/4 flex justify-end">
