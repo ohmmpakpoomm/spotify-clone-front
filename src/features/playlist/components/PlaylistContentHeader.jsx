@@ -22,7 +22,7 @@ export default function PlaylistContentHeader() {
   };
   useEffect(() => {
     getData();
-  }, [isChanging]);
+  }, [isChanging, playlistId]);
 
   return (
     <div className="h-[27%] w-full flex">
