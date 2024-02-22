@@ -42,7 +42,7 @@ export default function AuthContextProvider({ children }) {
     setToken(res.data.accessToken);
   };
 
-  const logout = () => {
+  const logout = async () => {
     setAuthUser(null);
     removeToken();
     removeLocalCode();
@@ -53,6 +53,7 @@ export default function AuthContextProvider({ children }) {
   const deleteAccount = async (userId) => {
     try {
       await authApi.deleteUser(userId);
+      await logout();
     } catch (err) {
       console.log(err);
     }

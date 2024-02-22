@@ -2,11 +2,15 @@ import React from "react";
 import useAuth from "../hooks/use-auth";
 
 export default function Dropdown() {
-  const { logout } = useAuth();
+  const { logout, deleteAccount, authUser } = useAuth();
   return (
     <div className="relative">
       <ul className="absolute w-[150px] text-sm font-light bg-gray02 shadow-[0_0_15px_rgb(0,0,0,0.4)] p-2 rounded-md right-0 translate-y-2">
-        <li role="button" className="hover:bg-gray03 p-2 rounded-lg">
+        <li
+          role="button"
+          className="hover:bg-gray03 p-2 rounded-lg"
+          onClick={() => deleteAccount(authUser.id)}
+        >
           Delete Account
         </li>
         <hr />
