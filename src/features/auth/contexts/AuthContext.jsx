@@ -6,6 +6,9 @@ import {
   setToken,
   getToken,
   setLocalCode,
+  removeSpotifyToken,
+  removeLocalDeviceId,
+  removeLocalCode,
 } from "../../../utils/local-storage";
 
 export const AuthContext = createContext();
@@ -43,6 +46,9 @@ export default function AuthContextProvider({ children }) {
   const logout = () => {
     setAuthUser(null);
     removeToken();
+    removeLocalCode();
+    removeSpotifyToken();
+    removeLocalDeviceId();
   };
 
   const changePassword = async (user) => {

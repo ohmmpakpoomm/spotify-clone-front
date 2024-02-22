@@ -25,7 +25,7 @@ export default function Player(props) {
   const [current_track, setTrack] = useState(track);
   const [volume, setVolume] = useState(0);
 
-  let token = getLocalSpotifyToken();
+  let token = "";
 
   setTimeout(() => {
     token = getLocalSpotifyToken();
