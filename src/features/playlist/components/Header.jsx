@@ -1,12 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
-import { Link } from "react-router-dom";
 import Avatar from "../../../components/Avatar";
-import { useState } from "react";
 import Dropdown from "../../../components/Dropdown";
-import { useLocation } from "react-router-dom";
 import usePlaylist from "../../../hooks/use-playlist.js";
-import { useEffect } from "react";
 
 export default function Header() {
   const [input, setInput] = useState("");

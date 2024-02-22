@@ -1,15 +1,9 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import * as spotifyAPI from "../../../apis/spotify";
+import React, { useEffect, useState } from "react";
+import { PlayCircle, PauseCircle, SkipForward, SkipBack } from "lucide-react";
 import {
   getLocalSpotifyToken,
   setLocalDeviceId,
 } from "../../../utils/local-storage";
-import { PlayCircle } from "lucide-react";
-import { PauseCircle } from "lucide-react";
-import { SkipForward } from "lucide-react";
-import { SkipBack } from "lucide-react";
 
 const track = {
   name: "",

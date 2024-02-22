@@ -1,9 +1,8 @@
 import React from "react";
 import { Home, Search, Library, Plus } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import PlaylistList from "./PlaylistList";
 import usePlaylist from "../../../hooks/use-playlist.js";
-import { useLocation } from "react-router-dom";
 
 export default function Sidebar() {
   const location = useLocation();

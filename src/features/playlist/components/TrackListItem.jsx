@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Play, MoreHorizontal } from "lucide-react";
 import usePlaylist from "../../../hooks/use-playlist.js";
-import { useState } from "react";
 import AddTrackDropdown from "./AddTrackDropdown.jsx";
 
 export default function TrackListItem({ item, number }) {

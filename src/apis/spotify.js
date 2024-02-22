@@ -1,9 +1,5 @@
 import spotifyAPI from "../config/spotifyAPI";
-import {
-  getLocalDeviceId,
-  getLocalSpotifyToken,
-  setLocalDeviceId,
-} from "../utils/local-storage";
+import { getLocalDeviceId, getLocalSpotifyToken } from "../utils/local-storage";
 
 const spotifyToken = getLocalSpotifyToken();
 

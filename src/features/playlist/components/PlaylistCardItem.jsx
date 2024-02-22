@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import usePlaylist from "../../../hooks/use-playlist.js";
-import { Minus, Music } from "lucide-react";
+import { Music, Play } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import { Play } from "lucide-react";
 
 export default function PlaylistCardItem({ item, number }) {
   const { name, playlistImage, id } = item;

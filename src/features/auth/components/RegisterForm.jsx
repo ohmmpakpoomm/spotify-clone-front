@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import Input from "../../../components/Input";
 import Label from "../../../components/Label";
 import validateRegister from "../validations/validate-register";

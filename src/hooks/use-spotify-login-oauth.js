@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { getLocalCode, setLocalSpotifyToken } from "../utils/local-storage";
 import { useNavigate } from "react-router-dom";
 

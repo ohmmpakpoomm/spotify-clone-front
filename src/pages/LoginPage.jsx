@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SpotifyWhiteLogo from "../assets/Spotify_Logo_RGB_White.png";
 import LoginForm from "../features/auth/components/LoginForm";
 import Container from "../features/auth/components/Container";
 

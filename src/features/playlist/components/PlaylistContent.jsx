@@ -1,9 +1,6 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import * as playlistApi from "../../../apis/playlist";
-import PlaylistContentList from "./PlaylistContentList";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import PlaylistContentList from "./PlaylistContentList";
 import usePlaylist from "../../../hooks/use-playlist";
 import PlaylistContentHeader from "./PlaylistContentHeader";
 

@@ -1,8 +1,7 @@
 import React from "react";
-import { Clock3 } from "lucide-react";
+import { Clock3, Play } from "lucide-react";
 import PlaylistContentListItem from "./PlaylistContentListItem";
 import usePlaylist from "../../../hooks/use-playlist";
-import { Play } from "lucide-react";
 
 export default function PlaylistContentList({ trackList }) {
   const items = trackList.map((obj, index) => obj.uri);

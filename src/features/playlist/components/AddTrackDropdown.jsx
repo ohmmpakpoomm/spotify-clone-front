@@ -1,6 +1,4 @@
 import React from "react";
-import PlaylistList from "./PlaylistList";
-import AddTrackDropdownItem from "./AddTrackDropdownItem";
 import AddTrackDropdownList from "./AddTrackDropdownList";
 
 export default function AddTrackDropdown({ track, setIsOpen }) {

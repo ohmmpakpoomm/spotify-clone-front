@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Play, MoreHorizontal } from "lucide-react";
 import usePlaylist from "../../../hooks/use-playlist.js";
-import { useState } from "react";
-import AddTrackDropdown from "./AddTrackDropdown.jsx";
 import DeleteTrackDropdown from "./DeleteTrackDropdown.jsx";
 
 export default function PlaylistContentListItem({ item, number }) {
@@ -20,15 +18,6 @@ export default function PlaylistContentListItem({ item, number }) {
   } else {
     formatSec = sec;
   }
-
-  const trackData = {
-    name,
-    durationMs,
-    uri,
-    artistName,
-    albumName,
-    albumImage,
-  };
 
   return (
     <li className="group w-full h-[56px] px-4 flex items-center gap-4 hover:bg-gray02 transition-[300ms] rounded-md">
