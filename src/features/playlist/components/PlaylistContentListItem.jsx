@@ -31,12 +31,14 @@ export default function PlaylistContentListItem({ item, number }) {
   };
 
   return (
-    <li className="group w-full h-[56px] px-4 flex items-center gap-4 hover:bg-gray02 rounded-md">
+    <li className="group w-full h-[56px] px-4 flex items-center gap-4 hover:bg-gray02 transition-[300ms] rounded-md">
       <div className="w-4 flex justify-end">
-        <span className="text-gray05 block group-hover:hidden">{number}</span>
+        <span className="text-gray05 block group-hover:hidden transition-[300ms]">
+          {number}
+        </span>
         <Play
           role="button"
-          className="hidden group-hover:block fill-white"
+          className="hidden group-hover:block fill-white transition-[300ms]"
           size={16}
           onClick={() => playTrack([uri])}
         />
@@ -45,13 +47,13 @@ export default function PlaylistContentListItem({ item, number }) {
         <img src={albumImage} className=" w-10 h-10 mr-3" />
         <div className="flex flex-col">
           <span className="font-extralight text-sm">{name}</span>
-          <small className=" text-gray05 group-hover:text-white">
+          <small className=" text-gray05 group-hover:text-white transition-[300ms]">
             {artistName}
           </small>
         </div>
       </div>
       <div className="flex-1">
-        <span className="font-extralight text-sm text-gray05 group-hover:text-white">
+        <span className="font-extralight text-sm text-gray05 group-hover:text-white transition-[300ms]">
           {albumName}
         </span>
       </div>
@@ -62,7 +64,7 @@ export default function PlaylistContentListItem({ item, number }) {
       </div>
       <div className="w-4">
         <MoreHorizontal
-          className="hidden group-hover:block fill-white"
+          className="hidden group-hover:block fill-white transition-[300ms]"
           size={16}
           onClick={() => setIsOpen(!isOpen)}
         />

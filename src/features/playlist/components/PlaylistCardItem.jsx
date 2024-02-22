@@ -19,7 +19,7 @@ export default function PlaylistCardItem({ item, number }) {
     <li>
       <Link
         role="button"
-        className="relative group p-4 gap-4 h-fit rounded-md bg-gray012 flex flex-col items-center hover:bg-gray02"
+        className="relative group p-4 gap-4 h-fit rounded-md bg-gray012 flex flex-col items-center hover:bg-gray02 transition-[300ms]"
         to={`/playlist/${id}`}
       >
         {playlistImage ? (
@@ -29,10 +29,10 @@ export default function PlaylistCardItem({ item, number }) {
             <Music />
           </div>
         )}
-        <div className=" absolute top-[86px] left-[80px] w-full py-2 px-4 hidden group-hover:block">
+        <div className=" absolute top-[86px] left-[80px] w-full py-2 px-4 hidden group-hover:block transition-[300ms]">
           <button
             onClick={() => playTrack(items)}
-            className="bg-green text-gray004 w-10 h-10 rounded-full flex justify-center items-center"
+            className="bg-green text-gray004 w-10 h-10 rounded-full flex justify-center items-center hover:w-11 hover:h-11 transition-[300ms]"
           >
             <Play fill="black" />
           </button>

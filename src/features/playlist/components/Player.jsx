@@ -26,12 +26,11 @@ export default function Player(props) {
   const [volume, setVolume] = useState(0);
 
   let token = "";
-
   setTimeout(() => {
     token = getLocalSpotifyToken();
   }, 1200);
 
-  useEffect(() => {
+  const createPlayer = async () => {
     const script = document.createElement("script");
     script.src = "https://sdk.scdn.co/spotify-player.js";
     script.async = true;
@@ -40,7 +39,7 @@ export default function Player(props) {
 
     window.onSpotifyWebPlaybackSDKReady = () => {
       const player = new window.Spotify.Player({
-        name: "Web Playback SDK",
+        name: "Spotify Clone Player",
         getOAuthToken: (cb) => {
           cb(token);
         },
@@ -78,6 +77,10 @@ export default function Player(props) {
 
       player.connect();
     };
+  };
+
+  useEffect(() => {
+    createPlayer();
   }, [token]);
 
   return (

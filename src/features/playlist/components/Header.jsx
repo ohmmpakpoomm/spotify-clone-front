@@ -41,11 +41,15 @@ export default function Header() {
               type="text"
               onChange={hdlChangeInput}
               placeholder="What do you want to play?"
-              className=" h-[80%] w-1/2 text-sm bg-gray02 border border-gray02 p-4 rounded-full hover:border-gray04 focus:outline-none focus:border-2 focus:border-white"
+              className=" h-[80%] w-1/2 text-sm bg-gray02 border border-gray02 p-4 rounded-full hover:border-gray04 focus:outline-none focus:border-2 focus:border-white transition-[300ms]"
             />
           </div>
         )}
-        <div role="button" onClick={() => setIsOpen(!isOpen)}>
+        <div
+          role="button"
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-8 flex justify-center items-center"
+        >
           <Avatar />
           {isOpen && <Dropdown />}
         </div>

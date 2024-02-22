@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import useAuth from "../hooks/use-auth";
 import { getLocalCode, setLocalSpotifyToken } from "../utils/local-storage";
+import { useNavigate } from "react-router-dom";
 
 export const useSpotifyLoginOAuth = () => {
+  const navigate = useNavigate();
   const codeForOAuth = getLocalCode();
   const clientId = "902b87520c3343e5a9c83e332e45784d";
   const redirect_uri = "http://localhost:5173";
@@ -71,11 +72,14 @@ export const useSpotifyLoginOAuth = () => {
     const url = "https://accounts.spotify.com/api/token";
     const body = await fetch(url, payload);
     const response = await body.json();
-    setLocalSpotifyToken(response.access_token);
+    await setLocalSpotifyToken(response.access_token);
+    await navigate("/");
   };
 
   useEffect(() => {
-    if (codeForOAuth) getToken(codeForOAuth);
+    if (codeForOAuth) {
+      getToken(codeForOAuth);
+    }
   }, [codeForOAuth]);
   return;
 };

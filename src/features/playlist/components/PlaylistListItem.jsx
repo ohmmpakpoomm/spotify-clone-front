@@ -14,7 +14,7 @@ export default function PlaylistListItem({ item, number }) {
     <li>
       <Link
         role="button"
-        className="group h-16 p-2 gap-4 rounded-md bg-gray012 flex items-center hover:bg-gray03"
+        className="group h-16 p-2 gap-4 rounded-md bg-gray012 flex items-center hover:bg-gray02 transition-[300ms]"
         to={`/playlist/${id}`}
       >
         {playlistImage ? (

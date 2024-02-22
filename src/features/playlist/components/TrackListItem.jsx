@@ -32,7 +32,7 @@ export default function TrackListItem({ item, number }) {
   };
 
   return (
-    <li className="group w-full h-[56px] px-4 flex items-center gap-4 hover:bg-gray02 rounded-md">
+    <li className="group w-full h-[56px] px-4 flex items-center gap-4 hover:bg-gray02 transition-[300ms] rounded-md">
       <div className="w-4 flex justify-end">
         <span className="text-gray05 block group-hover:hidden">{number}</span>
         <Play

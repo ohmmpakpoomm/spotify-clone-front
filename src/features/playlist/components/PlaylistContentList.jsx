@@ -9,10 +9,10 @@ export default function PlaylistContentList({ trackList }) {
   const { playTrack } = usePlaylist();
   return (
     <ul className="w-full h-[65%] overflow-scroll py-2">
-      <div className="w-full py-2 px-4">
+      <div className="w-full h-14 py-3 px-4 flex items-center">
         <button
           onClick={() => playTrack(items)}
-          className=" bg-green text-gray004 w-12 h-12 rounded-full flex justify-center items-center"
+          className=" bg-green hover:h-14 hover:w-14 transition-[300ms] text-gray004 w-12 h-12 rounded-full flex justify-center items-center"
         >
           <Play fill="black" />
         </button>
